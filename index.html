@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Theater Sorting & Filtering - Movie Booking Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="container">
+            <h1 class="app-title">🎬 CineFind</h1>
+            <p class="movie-title">Avengers: Endgame</p>
+        </div>
+    </header>
+
+    <!-- Location Bar -->
+    <div class="location-bar">
+        <div class="container">
+            <div class="location-pill">
+                <span class="icon">📍</span>
+                <span class="location-text">Using: Current location (2.3 km radius)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sort & Filter Controls -->
+    <div class="controls-bar">
+        <div class="container">
+            <div class="controls-wrapper">
+                <button class="control-btn" id="sortBtn">
+                    <span class="icon">⇅</span> Sort
+                </button>
+                <button class="control-btn" id="filterBtn">
+                    <span class="icon">⚙</span> Filter
+                </button>
+                <div class="active-filters" id="activeFilters"></div>
+            </div>
+            <p class="helper-text">Adjust distance, price and amenities to find the best nearby theater</p>
+        </div>
+    </div>
+
+    <!-- Theater List -->
+    <main class="theater-list" id="theaterList">
+        <!-- Theater cards will be dynamically inserted here -->
+    </main>
+
+    <!-- Sort Bottom Sheet -->
+    <div class="bottom-sheet" id="sortSheet">
+        <div class="sheet-content">
+            <div class="sheet-header">
+                <h3>Sort By</h3>
+                <button class="close-btn" data-sheet="sortSheet">✕</button>
+            </div>
+            <div class="sheet-body">
+                <label class="radio-option">
+                    <input type="radio" name="sort" value="distance" checked>
+                    <span class="radio-label">
+                        <strong>Nearest first</strong>
+                        <small>Closest theaters based on your location</small>
+                    </span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="sort" value="price-low">
+                    <span class="radio-label">
+                        <strong>Cheapest nearby first</strong>
+                        <small>Lowest ticket prices in ascending order</small>
+                    </span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="sort" value="price-high">
+                    <span class="radio-label">
+                        <strong>Premium price nearby first</strong>
+                        <small>Highest ticket prices in descending order</small>
+                    </span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="sort" value="availability">
+                    <span class="radio-label">
+                        <strong>Best seats left first</strong>
+                        <small>Theaters with more available seats</small>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Bottom Sheet -->
+    <div class="bottom-sheet" id="filterSheet">
+        <div class="sheet-content">
+            <div class="sheet-header">
+                <h3>Filters</h3>
+                <button class="close-btn" data-sheet="filterSheet">✕</button>
+            </div>
+            <div class="sheet-body">
+                <div class="filter-section">
+                    <h4>Theater Chain</h4>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="chain" value="pvr">
+                        <span>PVR Cinemas only</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="chain" value="inox">
+                        <span>INOX only</span>
+                    </label>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>Radius</h4>
+                    <label class="checkbox-option">
+                        <input type="radio" name="radius" value="5" checked>
+                        <span>Within 5 km</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="radio" name="radius" value="10">
+                        <span>Within 10 km</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="radio" name="radius" value="20">
+                        <span>Within 20 km</span>
+                    </label>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Amenities</h4>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="amenity" value="wheelchair">
+                        <span>♿ Wheelchair accessible</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="amenity" value="parking">
+                        <span>🅿️ Parking available</span>
+                    </label>
+                </div>
+
+                <button class="apply-btn" id="applyFilters">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
